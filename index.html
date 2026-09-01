@@ -1,1 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ember | Modern Steakhouse</title>
+
+<meta 
+name="description" 
+content="Ember is a modern steakhouse experience crafted around premium cuts, fire, and atmosphere."
+>
+
+<link rel="icon" href="assets/logo.svg">
+
+
+<link rel="stylesheet" href="css/style.css">
+
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     GRAIN OVERLAY
+========================= -->
+
+<div class="grain"></div>
+
+
+
+<!-- =========================
+     HERO SECTION
+========================= -->
+
+<section class="hero" id="home">
+
+
+<div class="hero-background">
+
+
+<img 
+src="assets/images/hero/hero-1.webp"
+class="hero-image active"
+alt="Premium steak over fire"
+>
+
+
+<img 
+src="assets/images/hero/hero-2.webp"
+class="hero-image"
+alt="Steak preparation"
+>
+
+
+<img 
+src="assets/images/hero/hero-3.webp"
+class="hero-image"
+alt="Luxury plated steak"
+>
+
+
+<img 
+src="assets/images/hero/interior.webp"
+class="hero-image"
+alt="Modern steakhouse interior"
+>
+
+
+</div>
+
+
+
+
+<div class="hero-overlay"></div>
+
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+
+<a class="logo" href="#home">
+
+
+<img 
+src="assets/logo.svg"
+alt="Ember logo"
+class="logo-image"
+>
+
+
+<span>
+EMBER
+</span>
+
+
+</a>
+
+
+
+
+<nav class="navigation">
+
+
+<a href="#menu">
+Menu
+</a>
+
+
+<a href="#story">
+Story
+</a>
+
+
+<a href="#reserve">
+Reserve
+</a>
+
+
+</nav>
+
+
+
+
+<button class="menu-button">
+
+<span></span>
+<span></span>
+
+</button>
+
+
+</header>
+
+
+
+
+
+
+<!-- HERO CONTENT -->
+
+
+<div class="hero-content">
+
+
+<div class="hero-badge">
+
+Premium Fire Dining
+
+</div>
+
+
+
+<h1>
+
+
+Modern
+<br>
+
+<span>
+Steakhouse
+</span>
+
+
+</h1>
+
+
+
+<p>
+
+
+Premium cuts.
+<br>
+
+Crafted with fire.
+<br>
+
+Designed for unforgettable nights.
+
+
+</p>
+
+
+
+<div class="hero-actions">
+
+
+<a href="#menu" class="glass-button primary">
+
+Explore Menu
+
+</a>
+
+
+
+<a href="#reserve" class="glass-button">
+
+Reserve Table
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- =========================
+     IMAGE MARQUEE
+========================= -->
+
+
+<section class="marquee-section" id="menu">
+
+
+
+<div class="section-title">
+
+<h2>
+Signature Dishes
+</h2>
+
+
+<p>
+Explore our crafted menu
+</p>
+
+</div>
+
+
+
+
+
+<div class="marquee-wrapper">
+
+
+<div class="marquee-track">
+
+
+
+<article 
+class="dish-card"
+data-dish="wagyu"
+>
+
+
+<img 
+src="assets/images/dishes/wagyu/main.webp"
+alt="Wagyu Steak"
+>
+
+
+<div class="dish-overlay">
+
+<h3>
+Wagyu Steak
+</h3>
+
+<p>
+Premium aged beef
+</p>
+
+</div>
+
+
+</article>
+
+
+
+
+
+
+
+<article 
+class="dish-card"
+data-dish="kebab"
+>
+
+
+<img 
+src="assets/images/dishes/kebab/main.webp"
+alt="Lamb Kebab"
+>
+
+
+<div class="dish-overlay">
+
+<h3>
+Fire Kebab
+</h3>
+
+<p>
+Smoked lamb creation
+</p>
+
+</div>
+
+
+</article>
+
+
+
+
+
+
+
+<article 
+class="dish-card"
+data-dish="burger"
+>
+
+
+<img 
+src="assets/images/dishes/burger/main.webp"
+alt="Luxury Burger"
+>
+
+
+<div class="dish-overlay">
+
+<h3>
+Ember Burger
+</h3>
+
+<p>
+House signature
+</p>
+
+</div>
+
+
+</article>
+
+
+
+
+
+<!-- DUPLICATES FOR LOOP -->
+
+
+<article 
+class="dish-card"
+data-dish="wagyu"
+>
+
+
+<img 
+src="assets/images/dishes/wagyu/main.webp"
+alt="Wagyu Steak"
+>
+
+
+<div class="dish-overlay">
+
+<h3>
+Wagyu Steak
+</h3>
+
+<p>
+Premium aged beef
+</p>
+
+</div>
+
+
+</article>
+
+
+
+
+
+<article 
+class="dish-card"
+data-dish="kebab"
+>
+
+
+<img 
+src="assets/images/dishes/kebab/main.webp"
+alt="Lamb Kebab"
+>
+
+
+<div class="dish-overlay">
+
+<h3>
+Fire Kebab
+</h3>
+
+<p>
+Smoked lamb creation
+</p>
+
+</div>
+
+
+</article>
+
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- =========================
+     STORY SECTION
+========================= -->
+
+
+<section class="story" id="story">
+
+
+<div class="glass-panel">
+
+
+<h2>
+
+The Art Of Fire
+
+</h2>
+
+
+
+<p>
+
+
+Every dish begins with precision.
+From premium cuts to handcrafted sauces,
+Ember combines tradition with modern dining.
+
+
+</p>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- =========================
+     RESERVATION SECTION
+========================= -->
+
+
+<section class="reservation" id="reserve">
+
+
+<div class="reservation-card">
+
+
+<h2>
+
+Reserve Your Experience
+
+</h2>
+
+
+
+<p>
+
+Join us for an evening built around flavor,
+fire, and atmosphere.
+
+</p>
+
+
+
+
+<a href="#" class="glass-button primary">
+
+Book Now
+
+</a>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- =========================
+     DISH MODAL
+========================= -->
+
+
+<div class="dish-modal">
+
+
+<div class="modal-backdrop"></div>
+
+
+
+<div class="modal-content">
+
+
+
+<button class="modal-close">
+
+×
+
+
+</button>
+
+
+
+
+<img 
+class="modal-image"
+src=""
+alt=""
+>
+
+
+
+
+<div class="modal-information">
+
+
+<h2 class="modal-title">
+
+</h2>
+
+
+<p class="modal-description">
+
+</p>
+
+
+
+<h3>
+Ingredients
+</h3>
+
+
+
+<ul class="ingredients-list">
+
+
+</ul>
+
+
+
+<div class="gallery">
+
+
+<img src="" alt="">
+<img src="" alt="">
+<img src="" alt="">
+
+
+</div>
+
+
+
+
+<a class="glass-button primary">
+
+Order Dish
+
+</a>
+
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+
+<footer>
+
+
+<p>
+
+© Ember Steakhouse
+
+</p>
+
+
+</footer>
+
+
+
+
+
+
+<script src="js/script.js"></script>
+
+
+</body>
+
+
+</html>
