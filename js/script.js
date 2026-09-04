@@ -1,198 +1,109 @@
-/* =========================================================
+/* =====================================================
    EMBER STEAKHOUSE
-   MAIN JAVASCRIPT ENGINE
-========================================================= */
+   Vanilla JavaScript Controller
+===================================================== */
 
 
-
-document.addEventListener(
-"DOMContentLoaded",
-()=>{
+document.addEventListener("DOMContentLoaded", () => {
 
 
+/* =====================================================
+   HERO IMAGE CROSSFADE
+===================================================== */
 
 
+const hero = document.querySelector(".hero");
 
-
-
-/* =========================================================
-   HERO SCROLL IMAGE ENGINE
-
-   Changes background images based on
-   scroll progress through hero section
-========================================================= */
-
-
-const hero =
-document.querySelector(".hero");
-
-
-const heroImages =
-document.querySelectorAll(".hero-image");
-
-
-
-const heroMessages = [
-
-"Modern Steakhouse",
-
-"Premium aged cuts",
-
-"Crafted with fire",
-
-"An unforgettable dining experience"
-
+const heroImages = [
+"assets/images/hero/hero-1.webp",
+"assets/images/hero/hero-2.webp",
+"assets/images/hero/hero-3.webp",
+"assets/images/hero/hero-4.webp",
+"assets/images/hero/hero-5.webp",
+"assets/images/hero/hero-6.webp",
+"assets/images/hero/hero-7.webp"
 ];
 
 
-
-const heroTitle =
-document.querySelector(".hero-content h1");
+let currentHero = 0;
 
 
-
-const heroDescription =
-document.querySelector(".hero-content p");
+const heroLayer = document.querySelector(".hero-background");
 
 
+function changeHero(){
+
+if(!heroLayer) return;
 
 
-function updateHero(){
+heroLayer.style.opacity = "0";
 
 
-if(!hero)
-return;
+setTimeout(()=>{
 
 
-
-const rect =
-hero.getBoundingClientRect();
-
+heroLayer.style.backgroundImage =
+`url("${heroImages[currentHero]}")`;
 
 
-const scrollDistance =
-hero.offsetHeight - window.innerHeight;
+heroLayer.style.opacity = "1";
 
 
-
-let progress =
-Math.abs(rect.top) / scrollDistance;
+},600);
 
 
+currentHero++;
 
-if(progress < 0)
-progress = 0;
+if(currentHero >= heroImages.length){
 
+currentHero = 0;
 
-if(progress > 1)
-progress = 1;
-
-
+}
 
 
-let index =
-Math.floor(
-progress * heroImages.length
-);
+}
 
 
+if(heroLayer){
 
-if(index >= heroImages.length){
 
-index =
-heroImages.length - 1;
+heroLayer.style.backgroundImage =
+`url("${heroImages[0]}")`;
+
+
+setInterval(changeHero,7000);
+
 
 }
 
 
 
 
-heroImages.forEach(
-(image,i)=>{
 
 
-image.classList.toggle(
-"active",
-i===index
-);
+/* =====================================================
+   IMAGE MARQUEE AUTO DUPLICATION
+===================================================== */
 
 
-});
+const marquee = document.querySelector(".marquee-track");
 
 
+if(marquee){
 
-
-
-if(heroTitle){
-
-
-heroTitle.animate(
-
-[
-{
-opacity:0,
-transform:"translateY(20px)"
-},
-
-{
-opacity:1,
-transform:"translateY(0)"
-}
-
-],
-
-{
-
-duration:600,
-
-easing:
-"cubic-bezier(.16,1,.3,1)"
-
-}
-
-);
-
+marquee.innerHTML += marquee.innerHTML;
 
 
 }
 
 
 
-}
 
 
 
-window.addEventListener(
-"scroll",
-()=>{
-
-requestAnimationFrame(
-updateHero
-);
-
-}
-
-);
-
-
-
-
-
-updateHero();
-
-
-
-
-
-
-
-
-
-/* =========================================================
-   DISH DATABASE
-
-   Future backend can replace this
-========================================================= */
+/* =====================================================
+   MENU DATA
+===================================================== */
 
 
 const dishes = {
@@ -200,20 +111,12 @@ const dishes = {
 
 wagyu:{
 
-
-title:
-"Wagyu Steak",
-
+name:"Wagyu Prime Cut",
 
 description:
-"Premium Japanese inspired beef finished over open flames with smoked butter and herbs.",
+"Japanese inspired premium beef with deep marbling and a rich buttery finish.",
 
-
-main:
-"assets/images/dishes/wagyu/main.webp",
-
-
-gallery:[
+images:[
 
 "assets/images/dishes/wagyu/main.webp",
 
@@ -223,43 +126,30 @@ gallery:[
 
 ],
 
-
 ingredients:[
 
-"Premium Wagyu beef",
+"Premium Beef",
 
-"Garlic butter",
+"Sea Salt",
 
 "Rosemary",
 
-"Sea salt",
-
-"Black pepper"
+"Butter"
 
 ]
-
 
 },
 
 
 
-
 kebab:{
 
-
-title:
-"Fire Kebab",
-
+name:"Ember Kebab",
 
 description:
-"Slow grilled lamb prepared with traditional spices and modern presentation.",
+"Fire grilled meat skewers crafted with aromatic spices.",
 
-
-main:
-"assets/images/dishes/kebab/main.webp",
-
-
-gallery:[
+images:[
 
 "assets/images/dishes/kebab/main.webp",
 
@@ -269,44 +159,30 @@ gallery:[
 
 ],
 
-
 ingredients:[
 
-"Lamb",
+"Beef",
 
-"Smoked paprika",
+"Pepper",
 
-"Herbs",
+"Spices",
 
-"Olive oil",
-
-"Fresh vegetables"
+"Charcoal"
 
 ]
-
 
 },
 
 
 
-
-
 burger:{
 
-
-title:
-"Ember Burger",
-
+name:"Signature Ember Burger",
 
 description:
-"House crafted burger with premium beef, aged cheese and signature sauce.",
+"A handcrafted burger with flame grilled beef and house sauce.",
 
-
-main:
-"assets/images/dishes/burger/main.webp",
-
-
-gallery:[
+images:[
 
 "assets/images/dishes/burger/main.webp",
 
@@ -316,21 +192,83 @@ gallery:[
 
 ],
 
-
 ingredients:[
 
-"Premium beef",
+"Beef Patty",
 
-"Aged cheese",
+"Brioche",
 
-"Fresh lettuce",
+"Cheese",
 
-"House sauce",
-
-"Toasted bun"
+"Sauce"
 
 ]
 
+},
+
+
+
+biryani:{
+
+name:"Beef Biryani",
+
+description:
+"Slow cooked aromatic rice layered with tender beef.",
+
+images:[
+
+"assets/images/dishes/biryani/main.webp",
+
+"assets/images/dishes/biryani/side.webp",
+
+"assets/images/dishes/biryani/close.webp"
+
+],
+
+ingredients:[
+
+"Rice",
+
+"Beef",
+
+"Spices",
+
+"Herbs"
+
+]
+
+},
+
+
+
+meatballs:{
+
+name:"Ember Meatballs",
+
+description:
+"Hand rolled beef meatballs finished over open flame.",
+
+images:[
+
+"assets/images/dishes/meatballs/main.webp",
+
+"assets/images/dishes/meatballs/side.webp",
+
+"assets/images/dishes/meatballs/close.webp"
+
+],
+
+ingredients:[
+
+"Beef",
+
+"Garlic",
+
+"Herbs",
+
+"Spices"
+
+]
 
 }
 
@@ -345,202 +283,139 @@ ingredients:[
 
 
 
+/* =====================================================
+   DISH MODAL
+===================================================== */
 
-/* =========================================================
-   DISH MODAL SYSTEM
-========================================================= */
+
+const cards =
+document.querySelectorAll("[data-dish]");
 
 
 const modal =
 document.querySelector(".dish-modal");
 
 
-
 const modalImage =
-document.querySelector(".modal-image");
-
+document.querySelector(".modal-main-image");
 
 
 const modalTitle =
 document.querySelector(".modal-title");
 
 
-
 const modalDescription =
 document.querySelector(".modal-description");
 
 
-
-const ingredientList =
-document.querySelector(".ingredients-list");
-
-
-
 const gallery =
-document.querySelector(".gallery");
+document.querySelector(".modal-gallery");
+
+
+const ingredients =
+document.querySelector(".ingredients");
 
 
 
-const closeButton =
-document.querySelector(".modal-close");
+cards.forEach(card=>{
 
 
-
-const cards =
-document.querySelectorAll(".dish-card");
+card.addEventListener("click",()=>{
 
 
+const id = card.dataset.dish;
 
 
+const dish = dishes[id];
 
 
-
-function openDish(id){
-
-
-const dish =
-dishes[id];
-
-
-if(!dish)
-return;
-
-
-
-modalImage.src =
-dish.main;
-
-
-
-modalImage.alt =
-dish.title;
+if(!dish) return;
 
 
 
 modalTitle.textContent =
-dish.title;
-
+dish.name;
 
 
 modalDescription.textContent =
 dish.description;
 
 
-
-
-
-ingredientList.innerHTML="";
-
-
-
-dish.ingredients.forEach(
-(item)=>{
-
-
-const li =
-document.createElement("li");
-
-
-li.textContent =
-item;
-
-
-ingredientList.appendChild(li);
-
-
-}
-
-);
-
-
-
+modalImage.src =
+dish.images[0];
 
 
 
 gallery.innerHTML="";
 
 
-
-dish.gallery.forEach(
-(image)=>{
+dish.images.forEach(image=>{
 
 
-const img =
-document.createElement("img");
+const img=document.createElement("img");
 
 
-img.src =
-image;
+img.src=image;
+
+
+img.onclick=()=>{
+
+modalImage.src=image;
+
+};
 
 
 gallery.appendChild(img);
 
 
-}
-
-);
+});
 
 
 
+ingredients.innerHTML="";
 
 
-modal.classList.add(
-"active"
-);
+dish.ingredients.forEach(item=>{
+
+
+const li=document.createElement("li");
+
+
+li.textContent=item;
+
+
+ingredients.appendChild(li);
+
+
+});
 
 
 
-document.body.style.overflow =
-"hidden";
+modal.classList.add("active");
 
 
 
-}
+});
 
 
-
-
-
-cards.forEach(
-(card)=>{
-
-
-card.addEventListener(
-"click",
-()=>{
-
-
-openDish(
-card.dataset.dish
-);
-
-
-}
-
-);
-
-
-}
-
-);
+});
 
 
 
 
 
+const closeModal =
+document.querySelector(".modal-close");
 
 
-function closeModal(){
+if(closeModal){
 
 
-modal.classList.remove(
-"active"
-);
+closeModal.onclick=()=>{
 
+modal.classList.remove("active");
 
-
-document.body.style.overflow =
-"";
+};
 
 
 }
@@ -549,37 +424,36 @@ document.body.style.overflow =
 
 
 
-closeButton.addEventListener(
-"click",
-closeModal
+
+
+/* =====================================================
+   LIQUID CURSOR LIGHT
+===================================================== */
+
+
+const liquid =
+document.querySelector(".liquid-surface");
+
+
+window.addEventListener("mousemove",(e)=>{
+
+
+if(!liquid)return;
+
+
+liquid.style.setProperty(
+"--x",
+`${e.clientX}px`
 );
 
 
-
-document
-.querySelector(".modal-backdrop")
-.addEventListener(
-"click",
-closeModal
+liquid.style.setProperty(
+"--y",
+`${e.clientY}px`
 );
 
 
-
-document.addEventListener(
-"keydown",
-(e)=>{
-
-
-if(e.key==="Escape"){
-
-closeModal();
-
-}
-
-
-}
-
-);
+});
 
 
 
@@ -587,140 +461,50 @@ closeModal();
 
 
 
+/* =====================================================
+   SCROLL REVEAL
+===================================================== */
 
 
-/* =========================================================
-   MOBILE MENU
-========================================================= */
-
-
-
-const menuButton =
-document.querySelector(".menu-button");
-
-
-const navigation =
-document.querySelector(".navigation");
-
-
-
-
-if(menuButton){
-
-
-menuButton.addEventListener(
-"click",
-()=>{
-
-
-navigation.classList.toggle(
-"open"
-);
-
-
-
-menuButton.classList.toggle(
-"active"
-);
-
-
-
-}
-
-);
-
-
-}
-
-
-
-
-
-
-
-
-
-/* =========================================================
-   SCROLL REVEAL ENGINE
-
-   Vanilla replacement for
-   Framer Motion whileInView
-========================================================= */
-
-
-const revealElements =
-document.querySelectorAll(
-".dish-card, .glass-panel, .reservation-card"
-);
-
+const reveal =
+document.querySelectorAll(".fade-in");
 
 
 const observer =
-new IntersectionObserver(
-
-(entries)=>{
+new IntersectionObserver(entries=>{
 
 
-entries.forEach(
-(entry)=>{
+entries.forEach(entry=>{
 
 
 if(entry.isIntersecting){
 
 
-entry.target.classList.add(
-"visible"
-);
+entry.target.classList.add("visible");
 
 
-
-observer.unobserve(
-entry.target
-);
+observer.unobserve(entry.target);
 
 
 }
 
 
-
-}
-
-);
+});
 
 
-},
-
-
-{
-
+},{
 threshold:.15
-
-}
-
-
-);
+});
 
 
 
+reveal.forEach(el=>{
 
 
-revealElements.forEach(
-(element)=>{
+observer.observe(el);
 
 
-element.classList.add(
-"hidden"
-);
-
-
-observer.observe(
-element
-);
-
-
-}
-
-);
+});
 
 
 
@@ -729,125 +513,40 @@ element
 
 
 
-
-/* =========================================================
-   IMAGE MARQUEE PAUSE
-
-   Better mobile performance
-========================================================= */
+/* =====================================================
+   MOBILE PERFORMANCE
+===================================================== */
 
 
-const marquee =
-document.querySelector(
-".marquee-track"
-);
+let ticking=false;
 
 
-
-if(marquee){
-
-
-marquee.addEventListener(
-"mouseenter",
-()=>{
+window.addEventListener("scroll",()=>{
 
 
-marquee.style.animationPlayState =
-"paused";
+if(!ticking){
 
 
-}
-
-);
+window.requestAnimationFrame(()=>{
 
 
-
-marquee.addEventListener(
-"mouseleave",
-()=>{
+document.body.classList.add("scrolling");
 
 
-marquee.style.animationPlayState =
-"running";
+ticking=false;
 
 
-}
+});
 
-);
+
+ticking=true;
 
 
 }
 
 
+});
 
 
 
-
-
-
-
-/* =========================================================
-   SMOOTH BUTTON FEEDBACK
-========================================================= */
-
-
-const buttons =
-document.querySelectorAll(
-".glass-button"
-);
-
-
-
-buttons.forEach(
-(button)=>{
-
-
-button.addEventListener(
-"click",
-()=>{
-
-
-button.animate(
-
-[
-{
-transform:"scale(.96)"
-},
-
-{
-transform:"scale(1)"
-}
-
-],
-
-{
-
-duration:200,
-
-easing:
-"ease-out"
-
-}
-
-);
-
-
-}
-
-);
-
-
-}
-
-);
-
-
-
-
-
-
-
-
-
-}
-);
+});
