@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,6 +12,11 @@ EMBER | Modern Steakhouse
 </title>
 
 
+<link rel="preload" href="assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+
+<link rel="preload" href="assets/fonts/serif.woff2" as="font" type="font/woff2" crossorigin>
+
+
 <link rel="stylesheet" href="css/style.css">
 
 
@@ -25,10 +29,15 @@ EMBER | Modern Steakhouse
 <div class="grain"></div>
 
 
+<div class="smoke-container"></div>
 
-<!-- ================================
-     NAVIGATION
-================================ -->
+
+
+
+
+<!-- =========================
+NAVIGATION
+========================= -->
 
 
 <header class="navbar">
@@ -36,21 +45,12 @@ EMBER | Modern Steakhouse
 
 <a href="#" class="brand">
 
-<span class="brand-mark">
 
-<svg viewBox="0 0 40 40">
-
-<circle cx="20" cy="20" r="18"/>
-
-<path d="M20 8
-C13 8 9 13 9 20
-C9 27 13 32 20 32
-C27 32 31 27 31 20
-C31 13 27 8 20 8Z"/>
-
-</svg>
-
-</span>
+<img 
+src="assets/images/logo.png"
+alt="EMBER"
+class="brand-logo"
+>
 
 
 <span>
@@ -59,6 +59,7 @@ EMBER
 
 
 </a>
+
 
 
 
@@ -91,12 +92,31 @@ Reserve
 
 
 
-<button class="menu-toggle">
+
+<div class="nav-actions">
+
+
+<a href="#reserve" class="glass-button small">
+
+Reserve
+
+</a>
+
+
+
+<button class="menu-toggle" aria-label="Open Menu">
 
 <span></span>
+
 <span></span>
+
+<span></span>
+
 
 </button>
+
+
+</div>
 
 
 
@@ -110,58 +130,69 @@ Reserve
 
 
 
-<!-- ================================
-     HERO SECTION
-================================ -->
+<!-- =========================
+HERO
+========================= -->
 
 
 <section class="hero">
 
 
 
-<div class="hero-background">
+
+
+<div class="hero-images">
+
 
 
 <img 
-src="assets/images/hero/hero-01.webp"
+src="assets/images/hero/hero-1.webp"
 class="hero-image active"
+alt=""
 >
 
 
 <img 
-src="assets/images/hero/hero-02.webp"
+src="assets/images/hero/hero-2.webp"
 class="hero-image"
+alt=""
 >
 
 
 <img 
-src="assets/images/hero/hero-03.webp"
+src="assets/images/hero/hero-3.webp"
 class="hero-image"
+alt=""
 >
 
 
 <img 
-src="assets/images/hero/hero-04.webp"
+src="assets/images/hero/hero-4.webp"
 class="hero-image"
+alt=""
 >
 
 
 <img 
-src="assets/images/hero/hero-05.webp"
+src="assets/images/hero/hero-5.webp"
 class="hero-image"
+alt=""
 >
 
 
 <img 
-src="assets/images/hero/hero-06.webp"
+src="assets/images/hero/hero-6.webp"
 class="hero-image"
+alt=""
 >
 
 
 <img 
-src="assets/images/hero/hero-07.webp"
+src="assets/images/hero/hero-7.webp"
 class="hero-image"
+alt=""
 >
+
 
 
 </div>
@@ -176,12 +207,11 @@ class="hero-image"
 
 
 
-
 <div class="hero-content">
 
 
 
-<div class="glass-tag">
+<div class="glass-badge">
 
 Modern Steakhouse
 
@@ -190,8 +220,8 @@ Modern Steakhouse
 
 
 
-<h1>
 
+<h1>
 
 <span>
 Where fire
@@ -203,7 +233,6 @@ meets perfection
 </span>
 
 
-
 </h1>
 
 
@@ -213,8 +242,8 @@ meets perfection
 <p>
 
 Premium cuts, handcrafted dishes,
-and culinary experiences built around
-ancient fire techniques.
+and timeless cooking techniques
+crafted around fire.
 
 </p>
 
@@ -222,44 +251,46 @@ ancient fire techniques.
 
 
 
-<div class="hero-actions">
+<div class="hero-buttons">
 
 
-<a class="glass-button primary">
+<a class="glass-button primary" href="#menu">
 
 Explore Menu
 
 </a>
 
 
-<a class="glass-button">
+<a class="glass-button" href="#reserve">
 
 Reserve Table
 
 </a>
 
 
-</div>
-
-
-
 
 </div>
 
 
 
 
+</div>
 
 
 
-<!-- Floating steak PNG -->
 
-<div class="hero-product">
+
+
+
+
+<!-- Transparent PNG object -->
+
+<div class="hero-object">
 
 
 <img 
 src="assets/images/hero/steak.png"
-alt="Premium steak"
+alt="Signature steak"
 >
 
 
@@ -270,7 +301,7 @@ alt="Premium steak"
 
 
 
-<div class="hero-counter">
+<div class="hero-index">
 
 01 / 07
 
@@ -279,7 +310,6 @@ alt="Premium steak"
 
 
 
-
 </section>
 
 
@@ -290,50 +320,47 @@ alt="Premium steak"
 
 
 
-<!-- ================================
-     IMAGE MARQUEE
-================================ -->
+<!-- =========================
+IMAGE MARQUEE
+========================= -->
 
 
-<section class="marquee-section">
-
+<section class="image-marquee">
 
 
 <div class="marquee-track">
 
 
-<div class="marquee-item">
+
+<div class="marquee-card">
 
 <img src="assets/images/dishes/wagyu/main.webp">
 
 </div>
 
 
-<div class="marquee-item">
+<div class="marquee-card">
 
 <img src="assets/images/dishes/kebab/main.webp">
 
 </div>
 
 
-
-<div class="marquee-item">
+<div class="marquee-card">
 
 <img src="assets/images/dishes/burger/main.webp">
 
 </div>
 
 
-
-<div class="marquee-item">
+<div class="marquee-card">
 
 <img src="assets/images/dishes/biryani/main.webp">
 
 </div>
 
 
-
-<div class="marquee-item">
+<div class="marquee-card">
 
 <img src="assets/images/dishes/meatballs/main.webp">
 
@@ -341,8 +368,25 @@ alt="Premium steak"
 
 
 
+<!-- duplicate for infinite loop -->
+
+
+<div class="marquee-card">
+
+<img src="assets/images/dishes/wagyu/main.webp">
+
 </div>
 
+
+<div class="marquee-card">
+
+<img src="assets/images/dishes/kebab/main.webp">
+
+</div>
+
+
+
+</div>
 
 
 </section>
@@ -355,16 +399,15 @@ alt="Premium steak"
 
 
 
-<!-- ================================
-     MENU
-================================ -->
+<!-- =========================
+MENU
+========================= -->
 
 
-<section id="menu" class="menu-section">
+<section class="menu-section" id="menu">
 
 
-
-<div class="section-title">
+<div class="section-header">
 
 
 <span>
@@ -385,10 +428,9 @@ Our Menu
 
 <div class="menu-carousel" id="menuCarousel">
 
-<!-- Javascript generates cards here -->
+<!-- JS inserts dishes -->
 
 </div>
-
 
 
 
@@ -402,47 +444,57 @@ Our Menu
 
 
 
-<!-- ================================
-     DISH MODAL
-================================ -->
+<!-- =========================
+DISH MODAL
+========================= -->
 
 
-<div class="dish-modal">
+<div class="dish-modal" id="dishModal">
 
 
 
 <div class="modal-glass">
 
 
+
 <button class="modal-close">
 
 ×
-
 
 </button>
 
 
 
 
+
+<div class="modal-image-area">
+
+
 <img 
 class="modal-main-image"
+src=""
+alt=""
 >
 
 
-
-
-<div class="modal-info">
-
-
-<h2 class="modal-title">
-
-</h2>
+</div>
 
 
 
-<p class="modal-description">
 
-</p>
+
+
+<div class="modal-content">
+
+
+
+<h2 class="modal-title"></h2>
+
+
+
+<p class="modal-description"></p>
+
+
 
 
 
@@ -451,14 +503,23 @@ Ingredients
 </h3>
 
 
-<ul class="ingredients">
 
-</ul>
+<ul class="ingredients"></ul>
+
+
+
 
 
 
 <div class="modal-gallery">
 
+
+</div>
+
+
+
+
+
 </div>
 
 
@@ -471,7 +532,36 @@ Ingredients
 
 
 
-</div>
+
+
+
+
+
+
+<!-- =========================
+STORY PLACEHOLDER
+========================= -->
+
+
+<section id="story" class="story-section">
+
+</section>
+
+
+
+
+
+<section id="experience" class="experience-section">
+
+</section>
+
+
+
+
+
+<section id="reserve" class="reserve-section">
+
+</section>
 
 
 
@@ -479,11 +569,6 @@ Ingredients
 
 
 
-
-
-<!-- ================================
-     FOOTER PLACEHOLDER
-================================ -->
 
 
 <footer>
